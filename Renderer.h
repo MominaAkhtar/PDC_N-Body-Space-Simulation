@@ -9,4 +9,4 @@ public:
 
 private:
     sf::RenderWindow window;
-}
+};
