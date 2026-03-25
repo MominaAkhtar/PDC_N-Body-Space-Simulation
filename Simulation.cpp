@@ -38,31 +38,7 @@ void Simulation::computeForces(float dt) {
             float dy = bodies[j].y - bodies[i].y;
             float dist = sqrt(dx * dx + dy * dy) + 0.01f;
 
-            f#include "Renderer.h"
-
-Renderer::Renderer(int width, int height)
-    : window(sf::VideoMode(width, height), "N-Body Simulation") {}
-
-void Renderer::render(Simulation& sim) {
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-
-        for (auto& b : sim.getBodies()) {
-            sf::CircleShape circle(2);
-            circle.setPosition(b.x, b.y);
-            circle.setFillColor(sf::Color::White);
-            window.draw(circle);
-        }
-
-        window.display();
-    }
-}loat force = G * bodies[i].mass * bodies[j].mass / (dist * dist);
+            float force = G * bodies[i].mass * bodies[j].mass / (dist * dist);
 
             fx += force * dx / dist;
             fy += force * dy / dist;
